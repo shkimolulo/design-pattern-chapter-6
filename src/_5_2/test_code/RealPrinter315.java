@@ -1,4 +1,4 @@
-package _5_2.test_code_with_singleton;
+package _5_2.test_code;
 
 // 싱글턴 패턴 사용
 class RealPrinter315 implements Printer {	 

@@ -1,4 +1,4 @@
-package _5_2.test_code_with_singleton;
+package _5_2.test_code;
 
 import static org.junit.jupiter.api.Assertions.*;
 

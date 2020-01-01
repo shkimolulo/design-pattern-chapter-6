@@ -1,4 +1,4 @@
-package _5_2.test_code_with_singleton;
+package _5_2.test_code;
 
 //테스트용 가짜 프린터 
 public class FakePrinter implements Printer {
