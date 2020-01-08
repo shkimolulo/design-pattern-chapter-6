@@ -13,7 +13,7 @@ class UserThread extends Thread {
 		super(name);
 	}
 	
-	public void run() {
+	public synchronized void run() {
 		Printer printer = Printer.getPrinter();
 		printer.print(Thread.currentThread().getName() + " pirnt using " + printer.toString() + ".");
 	}
@@ -26,11 +26,11 @@ class Printer {
 	private int counter = 0;
 	private Printer() { }
 	
-	public static Printer getPrinter() {
+	public synchronized static Printer getPrinter() {
 		if (printer == null) {
 			try {
-				// 인스턴스 생성 전, 고의적으로 1ms 정지
-				Thread.sleep(1);
+//				 인스턴스 생성 전, 고의적으로 1ms 정지
+				Thread.sleep(1000);
 			} catch (InterruptedException e) { }
 			printer = new Printer();
 		}
@@ -38,8 +38,11 @@ class Printer {
 	}
 	
 	public void print(String str) {
-		counter++;
-		System.out.println(str + ' ' + counter);
+//		synchronized(this) {
+			counter++;
+			System.out.println(str + ' ' + counter);
+
+//		}
 	}
 }
 

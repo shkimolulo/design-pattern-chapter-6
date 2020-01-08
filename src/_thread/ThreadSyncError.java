@@ -11,8 +11,8 @@ package _thread;
 class Increment
 {
 	int num = 0;
-//	public void increment() { synchronized(this) { num++; } }
-	public void increment() { num++; }
+	public void increment() { synchronized(this) { num++; } }
+//	public void increment() { num++; }
 	public int getNum() { return num; }
 }
 

@@ -26,41 +26,41 @@ class UserThread extends Thread {
 }
 
 // 1
-class Printer {
-	private static Printer printer = new Printer();
-	private int counter = 0;
-	private Printer() { }
-	
-	public static Printer getPrinter() {
-		return printer;
-	}
-	
-	public void print(String str) {
-		counter++;
-		System.out.println(str + ' ' + counter);
-	}
-}
+//class Printer {
+//	private static Printer printer = new Printer();
+//	private int counter = 0;
+//	private Printer() { }
+//	
+//	public static Printer getPrinter() {
+//		return printer;
+//	}
+//	
+//	public void print(String str) {
+//		counter++;
+//		System.out.println(str + ' ' + counter);
+//	}
+//}
 
 // 2
-//class Printer {
-//	private static Printer printer = null;
-//    private int counter = 0;
-//    private Printer() { }
-//    
-//    public static synchronized Printer getPrinter() {
-//    	if (printer == null) {
-//    		printer = new Printer();
-//    	}
-//    	return printer;
-//    }
-//    
-//    public void print(String str) {
-//    	synchronized(this) {  // 오직 하나의 스레드만 접근을 허용함  
-//    		counter++;
-//        	System.out.println(str + ' ' + counter);
-//    	}
-//    }
-//}
+class Printer {
+	private static Printer printer = null;
+    private int counter = 0;
+    private Printer() { }
+    
+    public static synchronized Printer getPrinter() {
+    	if (printer == null) {
+    		printer = new Printer();
+    	}
+    	return printer;
+    }
+    
+    public void print(String str) {
+    	synchronized(this) {  // 오직 하나의 스레드만 접근을 허용함  
+    		counter++;
+        	System.out.println(str + ' ' + counter);
+    	}
+    }
+}
 
 public class Client {
 	private static final int THREAD_NUM = 5;

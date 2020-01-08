@@ -27,6 +27,11 @@ class UserThread extends Thread {
 	}
 	
 	public void run() {
+		try {
+			sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		Printer.print(Thread.currentThread().getName() + " print using " + ".");
 	}
 }
@@ -39,6 +44,12 @@ public class Client {
 		for(int i = 0; i < THREAD_NUM; i++) {
 			user[i] = new UserThread((i + 1) + "-thread");
 			user[i].start();
+			
+			try {
+				user[i].join();
+			} catch(InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
